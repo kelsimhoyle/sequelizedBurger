@@ -1,0 +1,76 @@
+<div class="container mb-4">
+
+  <div class="row justify-content-center">
+    <img src="assets/imgs/burgerSign.webp">
+  </div>
+
+  <div class="chalkboard pt-4 pb-4 mt-5 mb-5">
+
+
+    <h2>Burgers of the Day!</h2>
+
+
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block eaten=true}}
+    {{/unless}}
+    {{/each}}
+
+    <h2>Past Burgers</h2>
+
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block eaten=false}}
+    {{/if}}
+    {{/each}}
+
+  </div>
+
+            <div class="row justify-content-center">
+     <h3>Don't see what you Like? Add your own burger!</h3>
+    </div>
+      <div class="row justify-content-center">
+      <button class="btn btn-primary" id="create">Create a New Burger</button>
+    </div>
+
+        {{!-- <div class="row">
+      <div class="col-md-4 offset-4">
+        <img src="assets/imgs/burger.png" class="img-fluid">
+      </div> --}}
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" id="create-burger" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create a Burger</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="create-form">
+
+          <div class="form-group">
+            <label for="burger-name">Burger Name:</label>
+            <input type="text" class="form-control" id="burger-name" placeholder="Burger Name">
+          </div>
+
+          <div class="form-group">
+            <label for="devoured">Has this burger been eaten?</label><br>
+            <input type="radio" name="devoured" value="1" checked> Yes, and it was delicious!<br>
+            <input type="radio" name="devoured" value="0"> Nope, it's ready to eat!
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Add burger</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
